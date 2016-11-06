@@ -1,0 +1,376 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tuan.Estate_Value_Zillow.PropertyFragment">
+
+    <Button
+        android:id="@+id/compareButton"
+        android:text="compare neighborhood"
+        android:background="@color/myActionBarColor"
+        android:layout_gravity="bottom|center"
+        android:textColor="@color/cast_expanded_controller_text_color"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_height="30dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:paddingBottom="10dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/compareButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="1">
+
+            <com.google.android.gms.maps.MapView
+                android:id="@+id/mapview"
+                android:layout_width="match_parent"
+                android:layout_height="120dp" />
+
+            <HorizontalScrollView
+                android:layout_marginTop="2dp"
+                android:layout_width="match_parent"
+                android:id="@+id/imageListScrollView"
+                android:layout_height="100dp">
+
+                <LinearLayout
+                    android:id="@+id/img_container_layout"
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+            <ProgressBar
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar"
+                android:layout_gravity="center" />
+
+            <LinearLayout
+                android:layout_marginTop="2dp"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:background="@color/myActionBarColor"
+                android:layout_height="140dp">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp">
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_width="230dp">
+
+                        <TextView
+                            android:text="address"
+                            android:layout_width="match_parent"
+                            android:id="@+id/address_tv"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                            android:layout_height="35dp"
+                            android:textColor="@android:color/white"
+                            android:textAlignment="center"
+                            android:paddingTop="10dp"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:text="city stateZip zip"
+                            android:layout_width="match_parent"
+                            android:id="@+id/cityState_tv"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Button"
+                            android:layout_gravity="start|center_vertical"
+                            android:layout_height="35dp"
+                            android:paddingTop="5dp"
+                            android:paddingStart="5dp"
+                            android:textColor="@android:color/white"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/price_tv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="price"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                        android:textAlignment="center"
+                        android:gravity="fill_vertical|center_horizontal"
+                        android:textSize="18sp"
+                        android:textColor="@android:color/white"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:weightSum="1"
+                    android:layout_height="30dp">
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:text="Bedroom"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:layout_width="95dp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#ff696969">
+                    </View>
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:text="Bathroom"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textAlignment="center"
+                        android:layout_width="95dp"
+                        android:gravity="center_vertical|center_horizontal" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#ff696969">
+                    </View>
+
+                    <TextView
+                        android:layout_height="match_parent"
+                        android:text="Year Built"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textAlignment="center"
+                        android:layout_width="95dp"
+                        android:gravity="center_vertical|center_horizontal"/>
+
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#ff696969">
+                    </View>
+
+                    <TextView
+
+                        android:layout_height="match_parent"
+                        android:text="Finished SqFt"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textAlignment="center"
+                        android:layout_width="match_parent"
+                        android:gravity="center_vertical|center_horizontal"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#ff696969">
+                    </View>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:weightSum="1"
+                    android:layout_height="30dp">
+
+                    <TextView
+                        android:id="@+id/bedroom_tv"
+                        android:layout_height="match_parent"
+                        android:text="beds"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:textColor="@android:color/white"
+                        android:layout_width="95dp" />
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#ff696969">
+                    </View>
+
+                    <TextView
+                        android:id="@+id/bathroom_tv"
+                        android:layout_height="match_parent"
+                        android:text="baths"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@android:color/white"
+                        android:layout_width="95dp"
+                        android:gravity="center_vertical|center_horizontal"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#ff696969">
+                    </View>
+
+                    <TextView
+                        android:id="@+id/yearBuilt_tv"
+                        android:layout_height="match_parent"
+                        android:text="year"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@android:color/white"
+                        android:layout_width="95dp"
+                        android:gravity="center_vertical|center_horizontal"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#ff696969">
+                    </View>
+
+                    <TextView
+                        android:id="@+id/finishedSq_tv"
+                        android:layout_height="match_parent"
+                        android:text="sqft"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:textColor="@android:color/white"
+                        android:layout_width="match_parent"
+                        android:gravity="center_vertical|center_horizontal"/>
+
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="match_parent"
+                        android:background="#ff696969">
+                    </View>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:text="Home Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/home_desc_tv"
+                android:layout_margin="20dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="  MORE INFO"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView"
+                android:layout_marginTop="5dp"
+                android:background="@color/body_background"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+            <TextView
+                android:layout_marginTop="5dp"
+                android:text="Property Type: "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:id="@+id/type_tv"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Last Sold Date: "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastSoldDate_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Last Sold Price: "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lastSoldPrice_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Lot Size: "
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/lotSize_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Remodel Year"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/remodel_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Basement"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/basement_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Roof"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/roof_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="View"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/view_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Parking Type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/parking_type_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Heating Source"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/heating_source_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Heating System"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/heating_system_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:text="Room"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/room_tv"
+                android:layout_marginStart="5dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+            <TextView
+                android:id="@+id/zindexvalue_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/body_background"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

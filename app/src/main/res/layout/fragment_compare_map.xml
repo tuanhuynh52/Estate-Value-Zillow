@@ -1,0 +1,21 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tuan.Estate_Value_Zillow.CompareMapFragment">
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:id="@+id/mapProgressBar"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:indeterminateTint="@color/myMapActionBarColor"
+        />
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/compare_mapview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</FrameLayout>

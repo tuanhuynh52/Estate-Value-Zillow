@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#00695C</color>
+    <color name="colorPrimaryDark">#004D40</color>
+    <color name="colorAccent">#1de9b6</color>
+    <color name="main_background">#81D4FA</color>
+
+    //change status bar and action bar color
+    <color name="myStatusBarColor">#37474F</color>
+    <color name="myActionBarColor">#607d8b</color>
+    <color name="body_background">#E0E0E0</color>
+
+    <color name="mayMapStatusBarColor">#F44336</color>
+    <color name="myMapActionBarColor">#EF5350</color>
+
+</resources>
