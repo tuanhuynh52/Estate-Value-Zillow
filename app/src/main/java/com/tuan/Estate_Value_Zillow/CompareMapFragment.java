@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -55,6 +56,7 @@ public class CompareMapFragment extends Fragment implements OnMapReadyCallback{
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_compare_map, container, false);
 
+        setHasOptionsMenu(true);
         showActionBar();
         mProgressbar = (ProgressBar)view.findViewById(R.id.mapProgressBar);
         mProgressbar.setVisibility(View.VISIBLE);
@@ -69,6 +71,7 @@ public class CompareMapFragment extends Fragment implements OnMapReadyCallback{
 
         return view;
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -133,17 +136,26 @@ public class CompareMapFragment extends Fragment implements OnMapReadyCallback{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == android.R.id.home){
+        switch (id) {
+            case (android.R.id.home):
 //            Log.i(TAG, "click back button");
-            FragmentManager fm = getFragmentManager();
-            if (fm.getBackStackEntryCount() > 0) {
-                fm.popBackStack();
-            }
-            return true;
+                FragmentManager fm = getFragmentManager();
+                if (fm.getBackStackEntryCount() > 0) {
+                    fm.popBackStack();
+                }
+                return true;
+
+            case R.id.action_home:
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
+                ft.replace(R.id.fragment, new MainActivityFragment())
+                        .addToBackStack(null).commit();
+
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
 
-        return super.onOptionsItemSelected(item);
     }
 
     private class SearchTask extends AsyncTask<String, String, List<PropertyDetail>>{

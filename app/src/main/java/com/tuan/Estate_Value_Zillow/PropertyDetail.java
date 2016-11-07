@@ -8,26 +8,30 @@ package com.tuan.Estate_Value_Zillow;
 public class PropertyDetail {
 
     //neighborhood information
-    //private String zpid;
-    private String street, city, state, zipcode;
+    private String zpid;
+    private String street, city, state, zipcode, zEstimate;
     private Double lng, lat;
-    private String yearBuilt, finishedSize, bedroom, bathroom, zEstimate;
 
-    public PropertyDetail(String street, String city, String state, String zipcode,
+
+    public PropertyDetail(String zpid, String street, String city, String state, String zipcode,
                           Double lng, Double lat,
-                          String yearBuilt, String finishedSize, String bedroom,
-                          String bathroom, String zEstimate) {
+                          String zEstimate) {
+        this.zpid = zpid;
         this.street = street;
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
         this.lng = lng;
         this.lat = lat;
-        this.yearBuilt = yearBuilt;
-        this.finishedSize = finishedSize;
-        this.bedroom = bedroom;
-        this.bathroom = bathroom;
         this.zEstimate = zEstimate;
+    }
+
+    public String getZpid() {
+        return zpid;
+    }
+
+    public void setZpid(String zpid) {
+        this.zpid = zpid;
     }
 
     public String getStreet() {
@@ -76,38 +80,6 @@ public class PropertyDetail {
 
     public void setLat(Double lat) {
         this.lat = lat;
-    }
-
-    public String getYearBuilt() {
-        return yearBuilt;
-    }
-
-    public void setYearBuilt(String yearBuilt) {
-        this.yearBuilt = yearBuilt;
-    }
-
-    public String getFinishedSize() {
-        return finishedSize;
-    }
-
-    public void setFinishedSize(String finishedSize) {
-        this.finishedSize = finishedSize;
-    }
-
-    public String getBedroom() {
-        return bedroom;
-    }
-
-    public void setBedroom(String bedroom) {
-        this.bedroom = bedroom;
-    }
-
-    public String getBathroom() {
-        return bathroom;
-    }
-
-    public void setBathroom(String bathroom) {
-        this.bathroom = bathroom;
     }
 
     public String getzEstimate() {

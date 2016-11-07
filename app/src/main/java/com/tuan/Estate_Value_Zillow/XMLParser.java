@@ -40,30 +40,32 @@ class XMLParser {
 
         List<PropertyDetail> propertyList = new ArrayList<>();
 
-        URL url = null;
+        URL url;
         try {
             url = new URL(COMPARE_HTTP + ZWS_ID + "&zpid="+myZpid+ "&count=25");
 
-//            Log.i(TAG, url.toString());
+            Log.i(TAG, url.toString());
 
             String response = get(url);
             Document doc = XMLFromString(response);
-//            NodeList zpid_node = doc.getElementsByTagName("zpid");
+            NodeList zpid_node = doc.getElementsByTagName("zpid");
             NodeList street_node = doc.getElementsByTagName("street");
             NodeList zip_node = doc.getElementsByTagName("zipcode");
             NodeList city_node = doc.getElementsByTagName("city");
             NodeList state_node = doc.getElementsByTagName("state");
             NodeList lat_node = doc.getElementsByTagName("latitude");
             NodeList lng_node = doc.getElementsByTagName("longitude");
-            NodeList yearBuilt_node = doc.getElementsByTagName("yearBuilt");
-            NodeList size_node = doc.getElementsByTagName("finishedSqFt");
-            NodeList bath_node = doc.getElementsByTagName("bathrooms");
-            NodeList bed_node = doc.getElementsByTagName("bedrooms");
+//            NodeList yearBuilt_node = doc.getElementsByTagName("yearBuilt");
+//            NodeList size_node = doc.getElementsByTagName("finishedSqFt");
+//            NodeList bath_node = doc.getElementsByTagName("bathrooms");
+//            NodeList bed_node = doc.getElementsByTagName("bedrooms");
             NodeList price_node = doc.getElementsByTagName("amount");
 
             int property_count = lat_node.getLength();
-//            Log.i(TAG, "property_count = " +property_count);
+
             for (int i = 0; i < property_count; i++){
+                String zpid = zpid_node.item(i+1).getTextContent();
+
                 Double lat = Double.valueOf(lat_node.item(i).getTextContent());
                 Double lng = Double.valueOf(lng_node.item(i).getTextContent());
                 //Log.i(TAG, "Latlng is: " +lat+","+lng);
@@ -71,17 +73,20 @@ class XMLParser {
                 String zip = zip_node.item(i).getTextContent();
                 String city = city_node.item(i).getTextContent();
                 String state = state_node.item(i).getTextContent();
-                String yearBuild = yearBuilt_node.item(i).getTextContent();
-                String finishedSqft = size_node.item(i).getTextContent();
-                String bathroom = bath_node.item(i).getTextContent();
-                String bedroom = bed_node.item(i).getTextContent();
+//                String yearBuild = yearBuilt_node.item(i).getTextContent();
+//                String finishedSqft = size_node.item(i).getTextContent();
+//                String bathroom = bath_node.item(i).getTextContent();
+//                String bedroom = bed_node.item(i).getTextContent();
                 String zEstimate = price_node.item(i).getTextContent();
+                if (zEstimate.equals("")){
+                    zEstimate = "Unknown";
+                }
 
-                PropertyDetail propertyDetail = new PropertyDetail(street, city, state, zip,
-                        lng, lat, yearBuild, finishedSqft, bedroom, bathroom, zEstimate);
+                PropertyDetail propertyDetail = new PropertyDetail(zpid, street, city, state, zip,
+                        lng, lat, zEstimate);
                 propertyList.add(propertyDetail);
             }
-            //parsing data
+
             return propertyList;
 
         } catch (MalformedURLException e) {

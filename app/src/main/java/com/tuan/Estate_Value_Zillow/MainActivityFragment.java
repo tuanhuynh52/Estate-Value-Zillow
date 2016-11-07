@@ -126,6 +126,8 @@ public class MainActivityFragment extends Fragment implements GoogleApiClient.Co
         window.setStatusBarColor(getResources().getColor(R.color.colorPrimaryDark));
     }
 
+
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_item, menu);
