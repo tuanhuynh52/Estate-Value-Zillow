@@ -380,9 +380,14 @@ public class PropertyFragment extends Fragment implements OnMapReadyCallback{
             } else {
                 lastSoldPrice_tv.setVisibility(View.GONE);
             }
-            
-            String zIndexValue = doc.getElementsByTagName("zindexValue").item(0).getTextContent();
-            zindexvalue_tv.setText("  Zillow Index Value:   $"+zIndexValue);
+
+            NodeList zIndexValue_node = doc.getElementsByTagName("zindexValue");
+            if (zIndexValue_node.getLength() > 0 ){
+                String zIndexValue = zIndexValue_node.item(0).getTextContent();
+                zindexvalue_tv.setText("  Zillow Index Value:   $"+zIndexValue);
+            } else {
+                zindexvalue_tv.setText("  Zillow Index Value:   $Unknown");
+            }
 
             //parse another xml to retrieve images of given property
             URL imageUrl = null;
