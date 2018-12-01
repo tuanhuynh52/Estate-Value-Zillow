@@ -10,10 +10,11 @@ android {
         }
     }
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion '25.0.0'
     defaultConfig {
         applicationId 'com.tuan.Estate_Value_Zillow'
         minSdkVersion 21
+        //noinspection ExpiredTargetSdkVersion
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -42,6 +43,7 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    //noinspection GradleCompatible
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:support-v4:24.2.1'
@@ -50,4 +52,16 @@ dependencies {
     compile 'com.google.maps.android:android-maps-utils:0.4+'
     compile 'com.android.support:multidex:1.0.1'
     testCompile 'junit:junit:4.12'
+}
+
+buildscript {
+    repositories {
+        google() // <--here
+    }
+}
+
+allprojects {
+    repositories {
+        google() // <-- here
+    }
 }

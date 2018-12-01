@@ -1,5 +1,6 @@
 package com.tuan.Estate_Value_Zillow;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -104,6 +105,7 @@ public class MainActivityFragment extends Fragment implements GoogleApiClient.Co
         assert mActionBar != null;
         mActionBar.setTitle("Home");
         setHasOptionsMenu(true);
+
         return v;
     }
 
@@ -143,6 +145,7 @@ public class MainActivityFragment extends Fragment implements GoogleApiClient.Co
                 //check if device is connected to the internet
                 ConnectivityManager cm = (ConnectivityManager)getActivity()
                         .getSystemService(Context.CONNECTIVITY_SERVICE);
+                assert cm != null;
                 NetworkInfo networkInfo = cm.getActiveNetworkInfo();
                 boolean connected;
                 connected = networkInfo != null && networkInfo.isConnected();
@@ -200,6 +203,7 @@ public class MainActivityFragment extends Fragment implements GoogleApiClient.Co
             };
             // Check whether if the GPS provider exists and if it is enabled in the device
             // If the GPS is enabled, request location updates.
+            assert locationManager != null;
             if (locationManager.getAllProviders().contains(LocationManager.NETWORK_PROVIDER)
                     && locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
                 // request location update with the location listener to use onLocationChanged(),
@@ -275,6 +279,7 @@ public class MainActivityFragment extends Fragment implements GoogleApiClient.Co
         final ConnectivityManager cm = (ConnectivityManager)getActivity()
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo activeNetwork;
+        assert cm != null;
         activeNetwork = cm.getActiveNetworkInfo();
 
         return activeNetwork != null && activeNetwork.isConnectedOrConnecting();
@@ -348,7 +353,7 @@ public class MainActivityFragment extends Fragment implements GoogleApiClient.Co
 //                Log.i(TAG, "street address: " + streetAddress);
 //                Log.i(TAG, "city state zip: " + cityStateZip);
 
-                /**
+                /*
                  * parse xml to retrieve property ID from zillow
                  */
 
@@ -419,6 +424,7 @@ public class MainActivityFragment extends Fragment implements GoogleApiClient.Co
         return response;
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class ZillowRequest extends AsyncTask<URL, Void, String>{
         @Override
         protected String doInBackground(URL... params) {

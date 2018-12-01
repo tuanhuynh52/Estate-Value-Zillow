@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.tuan.Estate_Value_Zillow">
 
     <uses-permission android:name="com.truiton.mapfragment.permission.MAPS_RECEIVE" />
@@ -27,7 +28,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="android.support.multidex.MultiDexApplication">>
+        android:name="android.support.multidex.MultiDexApplication"
+        android:fullBackupContent="@xml/backup_descriptor"
+        tools:ignore="GoogleAppIndexingWarning">
 
         <uses-library
             android:name="com.google.android.maps"

@@ -28,4 +28,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        int count = getFragmentManager().getBackStackEntryCount();
+        if (count == 0) {
+            super.onBackPressed();
+            this.finish();
+            System.exit(0);
+        } else {
+            getFragmentManager().popBackStack();
+        }
+
+    }
 }

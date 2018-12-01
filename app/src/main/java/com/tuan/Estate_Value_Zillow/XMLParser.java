@@ -44,7 +44,7 @@ class XMLParser {
         try {
             url = new URL(COMPARE_HTTP + ZWS_ID + "&zpid="+myZpid+ "&count=25");
 
-            //Log.i(TAG, url.toString());
+//            Log.i(TAG, url.toString());
 
             String response = get(url);
             Document doc = XMLFromString(response);
